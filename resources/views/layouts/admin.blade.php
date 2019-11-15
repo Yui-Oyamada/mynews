@@ -19,5 +19,11 @@
  
  <link href="{{ secure_asset('css/admin.css') }}" rel="stylesheet">
  
-  </head>
+  </head
+  <body>
+        <div id="app">
+           <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
+            
+           <nav class="navbar navbar-expand-md navbar-dark navbar-laravel">
+             
 </html>
