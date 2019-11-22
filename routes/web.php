@@ -30,7 +30,15 @@ Route::group(['prefix' => 'bbb'], function() {
     Route::get('news/create', 'Admin\NewsController@add');
 });
 
-Route::get('admin/profile/create','Action\profileController@add');
+Route::get('admin/profile/create','Admin\ProfileController@add');
 
-Route::get('admin/profile/edit','Action\profileController@add');
+Route::get('admin/profile/edit','Admin\ProfileController@add');
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
