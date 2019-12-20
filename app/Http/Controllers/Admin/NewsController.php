@@ -1,7 +1,8 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+
 use Illuminate\Http\Request;
-use  Illuminate\Support\Facades\HTML;
+use App\Http\Controllers\Controller;
 
 // 以下を追記することでNews Modelが扱えるようになる
 use App\News;
@@ -10,24 +11,14 @@ use Carbon\Carbon;
 
 class NewsController extends Controller
 {
-    public function index(Request $request)
-    {
-        $posts = News::all()->sortByDesc('updated_at');
-
-        if (count($posts) > 0) {
-            $headline = $posts->shift();
-        } else {
-            $headline = null;
-        }
-  
-return view('news.index', ['headline' => $headline, 'posts' => $posts]);
+    
+    
+    public function add() {
+      return view("admin.news.create");
     }
-}
-    return view("admin.news.create");
-  
-
  
-  {
+    public function create(Request $request)
+    {
 
       // 以下を追記
       // Varidationを行う
@@ -55,6 +46,7 @@ return view('news.index', ['headline' => $headline, 'posts' => $posts]);
 
       return redirect('admin/news');
   }
+  
   public function index(Request $request)
   {
       $cond_title = $request->cond_title;
@@ -108,7 +100,7 @@ return view('news.index', ['headline' => $headline, 'posts' => $posts]);
         return redirect('admin/news/');
     }
     
-public function delete(Request $request)
+  public function delete(Request $request)
   {
       // 該当するNews Modelを取得
       $news = News::find($request->id);
